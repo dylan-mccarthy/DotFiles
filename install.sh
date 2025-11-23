@@ -1,10 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -e
 
-zshrc() {
-    echo "cloning zsh-autosuggestions"             
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    echo "Import zshrc"
-    cat .zshrc > $HOME/.zshrc
-}
+# Install Oh My Zsh if missing
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh…"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
-zshrc
+# Symlink config
+echo "Linking .zshrc"
+ln -sf "$PWD/.zshrc" "$HOME/.zshrc"
+
+# Symlink custom themes/plugins
+mkdir -p "$HOME/.oh-my-zsh/custom"
+ln -sf "$PWD/oh-my-zsh-custom/"* "$HOME/.oh-my-zsh/custom/"
+
+echo "Done!"
