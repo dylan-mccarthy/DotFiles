@@ -59,7 +59,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -80,12 +80,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git
 zsh-syntax-highlighting
 zsh-autosuggestions
-zsh-interactive-cd
-zsh-navigation-tools
+#zsh-interactive-cd
+#zsh-navigation-tools
 docker
 dotenv
 dotnet
 azure
+kubectl
+helm
+gh
 )
 
 source $ZSH/oh-my-zsh.sh
